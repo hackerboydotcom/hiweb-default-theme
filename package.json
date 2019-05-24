@@ -9,10 +9,10 @@
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
-    "core-js": "^2.6.5",
+    "core-js": "^2.6.8",
     "hiweb-vue-base-storefront": "github:hackerboydotcom/hiweb-vue-base-storefront#dev",
     "popper.js": "^1.15.0",
-    "sweetalert2": "^8.11.4",
+    "sweetalert2": "^8.11.5",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1"
