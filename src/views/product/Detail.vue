@@ -4,8 +4,10 @@
     
     <Error v-if="error" :error="error" />
 
+    <loader v-if="isLoading" />
+
     <!-- Product loaded -->
-    <template v-if="productJsonApi">
+    <template v-if="!isLoading && productJsonApi">
       <div class="row">
 
         <div class="col-12" style="margin-top: -38px">
@@ -192,8 +194,6 @@
 
       </div>
     </template>
-
-    <loader v-else />
 
   </div>
 

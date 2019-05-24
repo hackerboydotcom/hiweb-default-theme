@@ -157,7 +157,7 @@
 				},
 
 				"after-product-images": {
-					"label": "Before product images",
+					"label": "After product images",
 					"components": [
 					]
 				},
@@ -169,13 +169,13 @@
 				},
 
 				"after-product-price": {
-					"label": "After product price",
+					"label": "After product title",
 					"components": [
 					]
 				},
 
 				"before-product-buy-button": {
-					"label": "After buy button",
+					"label": "Before buy button",
 					"components": [
 					]
 				},
