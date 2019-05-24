@@ -1,0 +1,86 @@
+
+img {
+  max-width: 100%;
+}
+
+.nice-select {
+
+  border: 1px solid #b2bec3 !important;
+  
+  .current {
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  ul.list {
+    max-height: 380px;
+    overflow: scroll;
+    border: 1px solid #b2bec3;
+    margin-left: -5px;
+    margin-top: -45px;
+
+    li {
+      border-bottom: 1px solid #b2bec3;
+      padding-right: 35px;
+      padding-top: 6px;
+      padding-bottom: 3px;
+      font-size: 18px;
+    }
+  }
+}
+
+@font-face {
+  font-family:"proxima-soft";
+  src:url("./assets/fonts/normal-400/1.woff2") format("woff2"), 
+      url("./assets/fonts/normal-400/2.woff") format("woff"),
+      url("./assets/fonts/normal-400/3.otf") format("opentype");
+  font-style:normal;font-weight:400;
+}
+
+@font-face {
+  font-family:"proxima-soft";
+  src:url("./assets/fonts/italic-400/1.woff2") format("woff2"), 
+      url("./assets/fonts/italic-400/2.woff") format("woff"),
+      url("./assets/fonts/italic-400/3.otf") format("opentype");
+  font-style:italic;font-weight:400;
+}
+
+@font-face {
+  font-family:"proxima-soft";
+  src:url("./assets/fonts/italic-700/1.woff2") format("woff2"), 
+      url("./assets/fonts/italic-700/2.woff") format("woff"),
+      url("./assets/fonts/italic-700/3.otf") format("opentype");
+  font-style:italic;font-weight:700;
+}
+
+@font-face {
+  font-family:"proxima-soft";
+  src:url("./assets/fonts/normal-700/1.woff2") format("woff2"), 
+      url("./assets/fonts/normal-700/2.woff") format("woff"),
+      url("./assets/fonts/normal-700/3.otf") format("opentype");
+  font-style:normal;font-weight:700;
+}
+
+@font-face {
+  font-family:"proxima-soft";
+  src:url("./assets/fonts/italic-900/1.woff2") format("woff2"), 
+      url("./assets/fonts/italic-900/2.woff") format("woff"),
+      url("./assets/fonts/italic-900/3.otf") format("opentype");
+  font-style:italic;font-weight:900;
+}
+
+@font-face {
+  font-family:"proxima-soft";
+  src:url("./assets/fonts/normal-900/1.woff2") format("woff2"), 
+      url("./assets/fonts/normal-900/2.woff") format("woff"),
+      url("./assets/fonts/normal-900/3.otf") format("opentype");
+  font-style:normal;font-weight:900;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: 'proxima-soft';
+  color: #2d3436;
+  -moz-osx-font-smoothing: grayscale;
+}

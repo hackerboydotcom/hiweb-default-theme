@@ -1,0 +1,218 @@
+{
+	"components": {
+
+		"slide": {
+			"label": "Images Slider",
+			"options": {
+
+				"images": {
+					"label": "Select images",
+					"type": "images",
+					"value": []
+				},
+
+				"links": {
+					"label": "Links (one per line)",
+					"type": "textarea",
+					"value": ""
+				},
+
+				"interval": {
+					"label": "Auto play interval in seconds (0 to disable)",
+					"type": "input-text",
+					"value": 0
+				},
+
+				"control": {
+					"label": "Show control buttons",
+					"type": "select",
+					"options": {
+						"yes": "Yes",
+						"no": "No"
+					},
+					"value": "yes"
+				},
+
+				"indicators": {
+					"label": "Show indicators",
+					"type": "select",
+					"options": {
+						"yes": "Yes",
+						"no": "No"
+					},
+					"value": "yes"
+				}
+
+			}
+		},
+
+		"delivery-estimation": {
+			"label": "Delivery estimation",
+			"available": ["product"]
+		},
+
+		"in-stock": {
+			"label": "Fake in stock warning",
+			"available": ["product"]
+		},
+
+		"orders-today": {
+			"label": "Fake orders today counting",
+			"available": ["product"]
+		},
+
+		"people-watching": {
+			"label": "Fake people watching",
+			"available": ["product"]
+		},
+
+		"timer": {
+			"label": "Fake count down timer",
+			"available": ["product"]
+		}
+
+	},
+
+	"pages": {
+
+		"global": {
+
+			"options": {
+
+				"show-collections-in-navbar": {
+					"group": "Navbar",
+					"label": "Show collections in navbar",
+					"type": "select",
+					"options": {
+						"yes": "Yes",
+						"no": "No"
+					},
+					"value": "yes"
+				}
+
+			}
+
+		},
+
+		"home": {
+
+			"options": {
+
+				"show-products": {
+					"label": "Show latest products",
+					"type": "select",
+					"options": {
+						"yes": "Yes",
+						"no": "No"
+					},
+					"value": "yes"
+				}
+
+			},
+
+			"sections": {
+
+				"home": {
+					"label": "Home page",
+					"components": [
+
+						{
+							"key": "slide",
+							"options": {
+								"images": {
+									"value": ["https://images.pexels.com/photos/325649/pexels-photo-325649.jpeg?cs=srgb&dl=art-artistic-background-325649.jpg&fm=jpg?search_query=&tracking_id=f4dx0kiebb9&w=1920&h=1086",
+										"https://images.pexels.com/photos/220067/pexels-photo-220067.jpeg?crop=entropy&cs=srgb&dl=background-blur-bright-220067.jpg&fit=crop&fm=jpg&h=1080&w=1920"
+									]
+								},
+								"links": {
+									"value": ""
+								},
+								"interval": {
+									"value": 0
+								},
+								"control": {
+									"value": "yes"
+								},
+								"indicators": {
+									"value": "yes"
+								}
+							}
+						}
+
+					]
+				}
+
+			}
+
+		},
+
+		"product": {
+
+			"sections": {
+
+				"before-product-images": {
+					"label": "Before product images",
+					"components": [
+					]
+				},
+
+				"after-product-images": {
+					"label": "Before product images",
+					"components": [
+					]
+				},
+
+				"after-product-title": {
+					"label": "After product title",
+					"components": [
+					]
+				},
+
+				"after-product-price": {
+					"label": "After product price",
+					"components": [
+					]
+				},
+
+				"before-product-buy-button": {
+					"label": "After buy button",
+					"components": [
+					]
+				},
+
+				"after-product-buy-button": {
+					"label": "After buy button",
+					"components": [
+					]
+				},
+
+				"after-product-detail": {
+					"label": "After product detail",
+					"components": [
+					]
+				}
+
+			}
+
+		},
+
+		"cart": {
+
+			"options": {
+
+				"show-related-products": {
+					"label": "Show related products",
+					"type": "select",
+					"options": {
+						"yes": "Yes",
+						"no": "No"
+					},
+					"value": "yes"
+				}
+
+			}
+
+		}
+
+	}
+}
