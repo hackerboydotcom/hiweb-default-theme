@@ -17,7 +17,7 @@
     </div>
 
     <!-- Option color selector -->
-    <template v-if="this.optionValues && getOptionType() === 'color'">
+    <template v-if="optionValues && getOptionType() === 'color'">
       <div class="row">
         <div class="text-center col-2" v-for="optionValue in optionValues" v-if="show(optionValue.id)">
 
