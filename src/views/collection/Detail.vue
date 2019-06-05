@@ -28,13 +28,13 @@
 
             <div class="row">
               <div class="col-4">
-                <router-link :to="{ name: 'collections.detail', params: { slug: childCollection.attributes.slug } }">
+                <router-link :to="{ name: 'collection.detail', params: { slug: childCollection.attributes.slug } }">
                   <img :src="$hiwebBase.image.resize(collectionsJsonApi.findRelationshipResource(childCollection, 'image'), 200, true)" :title="childCollection.attributes.title" :alt="childCollection.attributes.description" />
                 </router-link>
               </div>
 
               <div class="col-8 pl-0 pt-2">
-                <router-link :to="{ name: 'collections.detail', params: { slug: childCollection.attributes.slug } }" :title="childCollection.attributes.title">
+                <router-link :to="{ name: 'collection.detail', params: { slug: childCollection.attributes.slug } }" :title="childCollection.attributes.title">
                   <strong style="color: black;">{{ childCollection.attributes.title }}</strong>
                 </router-link>
                 <div><small>({{ childCollection.attributes.product_count }} product{{ childCollection.attributes.product_count > 1 ? 's' : '' }})</small></div>
