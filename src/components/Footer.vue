@@ -162,7 +162,7 @@ export default {
   data() {
     return {
       siteName: process.env.NODE_ENV === 'production' ? window.shop.name : '',
-      logo: (process.env.NODE_ENV === 'development' || (process.env.NODE_ENV === 'production' && !window.shop.logo)) ? require('@/assets/default.png') : this.$hiwebBase.resize(window.shop.logo.path, 380)
+      logo: (process.env.NODE_ENV === 'development' || (process.env.NODE_ENV === 'production' && !window.shop.logo)) ? require('@/assets/default.png') : this.$hiwebBase.image.resize(window.shop.logo.path, 380)
     };
   },
 
