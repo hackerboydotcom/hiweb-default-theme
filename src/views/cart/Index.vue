@@ -27,7 +27,7 @@
             <div class="input-group mt-3">
               <input type="text" class="form-control" placeholder="I have a COUPON" v-model="coupon" />
               <div class="input-group-append">
-                <button class="btn btn-success" type="button" @click="$hiwebBase.cart.update({ coupon: coupon })">Apply</button>
+                <button class="btn btn-success" type="button" @click="$hiwebBase.cart.applyCoupon(coupon)">Apply</button>
               </div>
             </div>
 
