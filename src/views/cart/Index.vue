@@ -18,10 +18,23 @@
             <loader v-if="isLoadingCart" />
 
             <template v-else>
-              <h3 style="font-weight: 700; font-size: 1.25rem; line-height: 1.5;">Subtotal: <span style="float: right;">{{ $hiwebBase.currency.formatted($hiwebBase.cart.subTotalPrice()) }}</span></h3>
+              <p>Shipping & Fees: <span style="float: right;">Calculated at checkout</span></p>
+              <p>Discount: <span style="float: right">{{ $hiwebBase.currency.formatted(cart ? cart.data.attributes.discount : 0) }}</span></p>
               <hr />
-              <p style="margin-bottom: 0px">Shipping & Fees: <span style="float: right;">Calculated at checkout</span></p>
+              <h3 style="font-weight: 700; font-size: 1.25rem; line-height: 1.5;">Total: <span style="float: right;">{{ $hiwebBase.currency.formatted($hiwebBase.cart.subTotalPrice() - (cart ? cart.data.attributes.discount : 0)) }}</span></h3>
             </template>
+
+            <div class="input-group mt-3">
+              <input type="text" class="form-control" placeholder="I have a COUPON" v-model="coupon" />
+              <div class="input-group-append">
+                <button class="btn btn-success" type="button" @click="$hiwebBase.cart.update({ coupon: coupon })">Apply</button>
+              </div>
+            </div>
+
+            <small v-if="$hiwebBase.cart.getCoupon()">
+              <span class="badge badge-success">{{ $hiwebBase.cart.getCoupon().attributes.code }}</span>
+              {{ $hiwebBase.cart.getCoupon().attributes.description }}
+            </small>
 
             <div style="width: 100%; position: relative; padding-top: 20px;">
               <a v-if="!isLoadingCart" class="btn btn-lg btn-primary btn-block" href="/checkout" style="margin-top: 0px; font-weight: 700; position: absolute; padding-left: 0px; padding-right: 0px; width: 100%; height: 55px; padding-top: 10px;">Proceed to Checkout</a>
@@ -53,7 +66,15 @@ export default {
 
   mixins: [base.mixins.cart.index],
 
-  components: { CartItems, RelatedProducts }
+  components: { CartItems, RelatedProducts },
+
+  data() {
+
+    return {
+      coupon: ''
+    }
+
+  }
 
 }
 </script>

@@ -43,8 +43,25 @@
                     
                   <!-- Price -->
                   <p>
-                    <small style="text-decoration: line-through;" class="text-muted" v-if="findVariant(cartItem).attributes.compare_at_price">{{ $hiwebBase.currency.formatted(findVariant(cartItem).attributes.compare_at_price) }}</small>
-                    <span class="ml-2">{{ $hiwebBase.currency.formatted(findVariant(cartItem).attributes.price) }}</span>
+
+                    <!-- Cart item has discount -->
+                    <template v-if="cartItem.attributes.discount">
+                      <small style="text-decoration: line-through;" class="text-muted">
+                        <!-- Compare at real price -->
+                        {{ $hiwebBase.currency.formatted(cartItem.attributes.price * cartItem.attributes.quantity) }}
+                      </small>
+                    </template>
+
+                    <!-- Cart item doesnt have discount -->
+                    <template v-else>
+                      <small style="text-decoration: line-through;" class="text-muted" v-if="findVariant(cartItem).attributes.compare_at_price">
+                        <!-- Compare at variant compare price -->
+                        {{ $hiwebBase.currency.formatted(findVariant(cartItem).attributes.compare_at_price * cartItem.attributes.quantity) }}
+                      </small>
+                    </template>
+                      
+                    <span class="ml-2">{{ $hiwebBase.currency.formatted(cartItem.attributes.price * cartItem.attributes.quantity - cartItem.attributes.discount) }}</span>
+
                   </p>
 
                 </div>
