@@ -12,7 +12,7 @@
     "core-js": "^2.6.9",
     "hiweb-vue-base-storefront": "github:hackerboydotcom/hiweb-vue-base-storefront#dev",
     "popper.js": "^1.15.0",
-    "sweetalert2": "^8.11.7",
+    "sweetalert2": "^8.12.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1"
@@ -22,7 +22,7 @@
     "@vue/cli-plugin-babel": "^3.8.0",
     "@vue/cli-plugin-e2e-cypress": "^3.8.0",
     "@vue/cli-service": "^3.8.0",
-    "sass": "^1.20.3",
+    "sass": "^1.21.0",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.5.21"
   },

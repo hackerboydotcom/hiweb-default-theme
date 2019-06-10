@@ -34,6 +34,7 @@
             <small v-if="$hiwebBase.cart.getCoupon()">
               <span class="badge badge-success">{{ $hiwebBase.cart.getCoupon().attributes.code }}</span>
               {{ $hiwebBase.cart.getCoupon().attributes.description }}
+              <span class="text-danger" @click="$hiwebBase.cart.update({ coupon_id: '' })" style="cursor: pointer">(Remove coupon)</span>
             </small>
 
             <div style="width: 100%; position: relative; padding-top: 20px;">
