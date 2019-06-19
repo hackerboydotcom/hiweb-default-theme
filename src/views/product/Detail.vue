@@ -111,10 +111,9 @@
               </div>
               <div class="col-9">
                 
-                <!-- Timer -->
-                <div class="product-detail__timer d-none d-sm-none d-md-block" v-if="activeVariantId">
-                  <!--<Timer />-->
-                  <!--<InStock :product-id="activeVariantId" min="2" max="15" />-->
+                <!-- Section: beside-product-qty -->
+                <div v-for="componentData in $hiwebBase.options.getSectionComponents('product', 'beside-product-qty')" class="mb-3" style="margin-top: -0.1rem">
+                  <component v-bind:is="componentData.key" :options="componentData.options" :product-json-api="productJsonApi" :active-variant="activeVariant" />
                 </div>
 
               </div>

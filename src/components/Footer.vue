@@ -10,7 +10,7 @@
         <div class="row">
 
           <div class="col-12 mb-5">
-            <img src="https://s3-us-west-2.amazonaws.com/scalable-licensing/public/web-assets/teechip-full.svg" style="width: 150px;" />
+            <img :src="logo" style="width: 150px;" />
           </div>
 
           <div class="col-md-3 col-6">

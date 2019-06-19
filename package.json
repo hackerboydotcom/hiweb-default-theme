@@ -12,7 +12,7 @@
     "core-js": "^2.6.9",
     "hiweb-vue-base-storefront": "github:hackerboydotcom/hiweb-vue-base-storefront#dev",
     "popper.js": "^1.15.0",
-    "sweetalert2": "^8.12.0",
+    "sweetalert2": "^8.12.1",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1"

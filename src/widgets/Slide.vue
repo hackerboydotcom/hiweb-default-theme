@@ -1,5 +1,5 @@
 <template>
-  <div v-if="options.images.value && options.images.value.length" :id="id" class="carousel slide" data-ride="carousel" :data-interval="options.interval.value ? parseInt(options.interval.value)*1000 : 'false'">
+  <div v-if="options.images.value && options.images.value.length" :id="id" :class="'carousel slide mt-2 mb-2 ' + displayClass" data-ride="carousel" :data-interval="options.interval.value ? parseInt(options.interval.value)*1000 : 'false'">
 
     <!-- Indicators -->
     <ol v-if="options.indicators && options.indicators.value === 'yes'" class="carousel-indicators">
@@ -28,10 +28,14 @@
 </template>
 
 <script type="text/javascript">
+import mixin from './display-option-mixin';
+
 export default {
 
   props: ['options'],
   name: 'slide',
+
+  mixins: [mixin],
 
   data() {
 

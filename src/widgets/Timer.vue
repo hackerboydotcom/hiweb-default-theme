@@ -1,5 +1,5 @@
 <template>
-  <div class="product-timer">
+  <div :class="'product-timer mb-2 mb-2' + displayClass">
     <div class="">
       <i class="far fa-clock mr-2"></i>
       <p class="product-timer__countdown" v-html="timer"></p>
@@ -41,10 +41,15 @@
 
 <script type="text/javascript">
 import $ from 'jquery';
+import mixin from './display-option-mixin';
 
 export default {
 
   name: 'timer',
+
+  props: ['options'],
+
+  mixins: [mixin],
 
   data() {
 

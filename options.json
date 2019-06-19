@@ -5,6 +5,18 @@
 			"label": "Images Slider",
 			"options": {
 
+				"display": {
+					"label": "Show for",
+					"type": "select",
+					"options": {
+						"all": "All devices",
+						"mobile": "Only mobile",
+						"mobile-tablet": "Mobile and tablet",
+						"desktop": "Only desktop"
+					},
+					"value": "all"
+				},
+
 				"images": {
 					"label": "Select images",
 					"type": "images",
@@ -48,27 +60,102 @@
 
 		"delivery-estimation": {
 			"label": "Delivery estimation",
-			"available": ["product"]
+			"available": ["product"],
+			"options": {
+
+				"display": {
+					"label": "Show for",
+					"type": "select",
+					"options": {
+						"all": "All devices",
+						"mobile": "Only mobile",
+						"mobile-tablet": "Mobile and tablet",
+						"desktop": "Only desktop"
+					},
+					"value": "all"
+				}
+
+			}
 		},
 
 		"in-stock": {
 			"label": "Fake in stock warning",
-			"available": ["product"]
+			"available": ["product"],
+			"options": {
+
+				"display": {
+					"label": "Show for",
+					"type": "select",
+					"options": {
+						"all": "All devices",
+						"mobile": "Only mobile",
+						"mobile-tablet": "Mobile and tablet",
+						"desktop": "Only desktop"
+					},
+					"value": "all"
+				}
+
+			}
 		},
 
 		"orders-today": {
 			"label": "Fake orders today counting",
-			"available": ["product"]
+			"available": ["product"],
+			"options": {
+
+				"display": {
+					"label": "Show for",
+					"type": "select",
+					"options": {
+						"all": "All devices",
+						"mobile": "Only mobile",
+						"mobile-tablet": "Mobile and tablet",
+						"desktop": "Only desktop"
+					},
+					"value": "all"
+				}
+
+			}
 		},
 
 		"people-watching": {
 			"label": "Fake people watching",
-			"available": ["product"]
+			"available": ["product"],
+			"options": {
+
+				"display": {
+					"label": "Show for",
+					"type": "select",
+					"options": {
+						"all": "All devices",
+						"mobile": "Only mobile",
+						"mobile-tablet": "Mobile and tablet",
+						"desktop": "Only desktop"
+					},
+					"value": "all"
+				}
+
+			}
 		},
 
 		"timer": {
 			"label": "Fake count down timer",
-			"available": ["product"]
+			"available": ["product"],
+			"options": {
+
+				"display": {
+					"label": "Show for",
+					"type": "select",
+					"options": {
+						"all": "All devices",
+						"mobile": "Only mobile",
+						"mobile-tablet": "Mobile and tablet",
+						"desktop": "Only desktop"
+					},
+					"value": "all"
+				}
+
+			}
 		}
 
 	},
@@ -79,6 +166,12 @@
 
 			"options": {
 
+				"test-wysiwyg": {
+					"label": "Test WYSIWYG",
+					"type": "wysiwyg",
+					"value": "Hello world"
+				},
+
 				"show-collections-in-navbar": {
 					"group": "Navbar",
 					"label": "Show collections in navbar",
@@ -88,6 +181,20 @@
 						"no": "No"
 					},
 					"value": "yes"
+				},
+
+				"footer-menu-1": {
+					"group": "Footer",
+					"label": "Menu 1 in footer",
+					"type": "menu",
+					"value": "footer"
+				},
+
+				"footer-menu-1": {
+					"group": "Footer",
+					"label": "Menu 2 in footer",
+					"type": "menu",
+					"value": "footer"
 				}
 
 			}
@@ -119,6 +226,11 @@
 						{
 							"key": "slide",
 							"options": {
+
+								"display": {
+									"value": "desktop"
+								},
+
 								"images": {
 									"value": ["https://images.pexels.com/photos/325649/pexels-photo-325649.jpeg?cs=srgb&dl=art-artistic-background-325649.jpg&fm=jpg?search_query=&tracking_id=f4dx0kiebb9&w=1920&h=1086",
 										"https://images.pexels.com/photos/220067/pexels-photo-220067.jpeg?crop=entropy&cs=srgb&dl=background-blur-bright-220067.jpg&fit=crop&fm=jpg&h=1080&w=1920"
@@ -153,12 +265,25 @@
 				"before-product-images": {
 					"label": "Before product images",
 					"components": [
+
+
+
 					]
 				},
 
 				"after-product-images": {
 					"label": "After product images",
 					"components": [
+						
+						{
+							"key": "delivery-estimation",
+							"options": {
+								"display": {
+									"value": "desktop"
+								}
+							}
+						}
+
 					]
 				},
 
@@ -174,15 +299,36 @@
 					]
 				},
 
+				"beside-product-qty": {
+					"label": "Beside qty",
+					"components": [
+
+						{
+							"key": "in-stock",
+							"options": {
+								"display": {
+									"value": "desktop"
+								}
+							}
+						}
+
+					]
+				},
+
 				"before-product-buy-button": {
 					"label": "Before buy button",
 					"components": [
+
 					]
 				},
 
 				"after-product-buy-button": {
 					"label": "After buy button",
 					"components": [
+
+						{
+							"key": "people-watching"
+						}
 					]
 				},
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="in-stock-widget">
+  <div :class="'in-stock-widget mt-2 mb-2 ' + displayClass">
     <p class="in-stock-widget__text">{{ count > 2 ? count : 2 }} items in stock</p>
   </div>
 </template>
@@ -30,11 +30,15 @@
 </style>
 
 <script type="text/javascript">
+import mixin from './display-option-mixin';
+
 export default {
 
   name: 'in-stock',
 
-  props: ['activeVariant', 'min', 'max'],
+  props: ['activeVariant', 'min', 'max', 'options'],
+
+  mixins: [mixin],
 
   data() {
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="people-watching-widget">
+  <div :class="'people-watching-widget mb-2 mt-2 ' + displayClass">
     <div class="text text-center text-muted"><span class="count">{{ count }}</span> people watching this product</div>
   </div>
 </template>
@@ -21,9 +21,13 @@
 </style>
 
 <script type="text/javascript">
+import mixin from './display-option-mixin';
+
 export default {
 
   name: 'people-watching',
+
+  mixins: [mixin],
 
   props: {
     min: {
@@ -33,6 +37,10 @@ export default {
     max: {
       type: Number,
       default: 15
+    },
+
+    options: {
+      type: Object
     }
   },
 

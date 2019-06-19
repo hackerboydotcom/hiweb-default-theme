@@ -1,5 +1,5 @@
 <template>
-  <div id="customer-reviews">
+  <div id="customer-reviews" :class="'mt-2 mb-2 ' + displayClass">
 
     <!-- Review stars -->
     <div class="text-center">
@@ -64,7 +64,13 @@
 </style>
 
 <script type="text/javascript">
+import mixin from './display-option-mixin';
+
 export default {
+
+  mixins: [mixin],
+
+  props: ['options'],
 
   data() {
 

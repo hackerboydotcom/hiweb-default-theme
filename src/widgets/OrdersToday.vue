@@ -1,5 +1,5 @@
 <template>
-  <div id="orders-today">
+  <div id="orders-today" :class="'mt-2 mb-2 ' + displayClass">
     <div class="card">
       <div class="card-body">
         <div class="text-center">
@@ -11,11 +11,15 @@
 </template>
 
 <script type="text/javascript">
+import mixin from './display-option-mixin';
+
 export default {
 
   name: 'orders-today',
 
-  props: ['productJsonApi'],
+  props: ['productJsonApi', 'options'],
+
+  mixins: [mixin],
 
   data() {
 
