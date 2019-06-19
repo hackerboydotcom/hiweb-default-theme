@@ -8,7 +8,7 @@
     
     <div class="carousel-inner">
       <div v-for="image, index in options.images.value" :class="'carousel-item ' + (!index ? 'active' : '')">
-        <img :src="image" />
+        <img :src="$hiwebBase.image.url(image)" />
       </div>
     </div>
 
