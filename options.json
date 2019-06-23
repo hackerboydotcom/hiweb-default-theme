@@ -183,6 +183,13 @@
 					"value": "yes"
 				},
 
+				"footer-menu-1-title": {
+					"group": "Footer",
+					"label": "Menu 1 title",
+					"type": "input-text",
+					"value": "Menu 1 Title"
+				},
+
 				"footer-menu-1": {
 					"group": "Footer",
 					"label": "Menu 1 in footer",
@@ -190,11 +197,32 @@
 					"value": "footer"
 				},
 
-				"footer-menu-1": {
+				"footer-menu-2-title": {
+					"group": "Footer",
+					"label": "Menu 2 title",
+					"type": "input-text",
+					"value": "Menu 2 Title"
+				},
+
+				"footer-menu-2": {
 					"group": "Footer",
 					"label": "Menu 2 in footer",
 					"type": "menu",
 					"value": "footer"
+				},
+
+				"footer-column-3-title": {
+					"group": "Footer",
+					"label": "Footer column 3 title",
+					"type": "input-text",
+					"value": "Column 3 title"
+				},
+
+				"footer-column-3-content": {
+					"group": "Footer",
+					"label": "Footer column 3 content",
+					"type": "wysiwyg",
+					"value": "<p>support@hiweb.com</p><p>123 Example Address.<br />Example City, IE 12345</p>"
 				}
 
 			}

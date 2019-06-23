@@ -14,37 +14,66 @@
           </div>
 
           <div class="col-md-3 col-6">
-            <strong class="footer__heading">Service</strong>
+            <strong class="footer__heading">{{ $hiwebBase.options.getPageOptions('global')['footer-menu-1-title'].value }}</strong>
 
             <div class="footer__menu">
-              <router-link class="mr-3" to="/pages/about-us">About us</router-link>
-              <router-link class="mr-3" to="/pages/contact-us">Contact us</router-link>
-              <router-link class="mr-3" to="/pages/shipping-and-delivery">Shipping & delivery</router-link>
-              <router-link class="mr-3" to="/pages/return-and-refund">Return & refund</router-link>
-              <router-link class="mr-3" to="/pages/privacy-policy">Privacy policy</router-link>
+
+              <template v-if="menuLinks1">
+                <template v-for="menuLink in menuLinks1.document.data">
+                  <router-link v-if="menuLink.attributes.link_type !== 'custom'" :key="menuLink.id" class="mr-3" :to="$hiwebBase.router.routeTo(menuLink.attributes.resource_id ? menuLinks1.findIncludedResource(menuLink.attributes.link_type, menuLink.attributes.resource_id) : menuLink)" :title="menuLink.attributes.title">
+                    {{ menuLink.attributes.text }}
+                  </router-link>
+                  <a v-else :href="menuLink.attributes.link" target="_blank" :title="menuLink.attributes.title">{{ menuLink.attributes.text }}</a>
+                </template>
+              </template>
+
+              <template v-else>
+                <Loader v-if="isLoadingMenu1" />
+                <template v-else>
+
+                  <!-- Default links -->
+                  <router-link class="mr-3" to="/pages/about-us">About us</router-link>
+                  <router-link class="mr-3" to="/pages/contact-us">Contact us</router-link>
+
+                </template>
+              </template>
+                  
             </div>
 
           </div>
           <div class="col-md-3 col-6">
-            <strong class="footer__heading">Policies</strong>
+            <strong class="footer__heading">{{ $hiwebBase.options.getPageOptions('global')['footer-menu-2-title'].value }}</strong>
 
             <div class="footer__menu">
-              <router-link class="mr-3" to="/pages/about-us">About us</router-link>
-              <router-link class="mr-3" to="/pages/contact-us">Contact us</router-link>
-              <router-link class="mr-3" to="/pages/shipping-and-delivery">Shipping & delivery</router-link>
-              <router-link class="mr-3" to="/pages/return-and-refund">Return & refund</router-link>
-              <router-link class="mr-3" to="/pages/privacy-policy">Privacy policy</router-link>
+
+              <template v-if="menuLinks2">
+                <template v-for="menuLink in menuLinks2.document.data">
+                  <router-link v-if="menuLink.attributes.link_type !== 'custom'" :key="menuLink.id" class="mr-3" :to="$hiwebBase.router.routeTo(menuLink.attributes.resource_id ? menuLinks2.findIncludedResource(menuLink.attributes.link_type, menuLink.attributes.resource_id) : menuLink)" :title="menuLink.attributes.title">
+                    {{ menuLink.attributes.text }}
+                  </router-link>
+                  <a v-else :href="menuLink.attributes.link" target="_blank" :title="menuLink.attributes.title">{{ menuLink.attributes.text }}</a>
+                </template>
+              </template>
+
+              <template v-else>
+                <Loader v-if="isLoadingMenu1" />
+                <template v-else>
+
+                  <!-- Default links -->
+                  <router-link class="mr-3" to="/pages/about-us">About us</router-link>
+                  <router-link class="mr-3" to="/pages/contact-us">Contact us</router-link>
+
+                </template>
+              </template>
+
             </div>
 
           </div>
           <div class="col-md-3 footer__thirt-column">
 
-            <strong class="footer__heading d-none d-sm-none d-md-block">Need help?</strong>
+            <strong class="footer__heading d-none d-sm-none d-md-block">{{ $hiwebBase.options.getPageOptions('global')['footer-column-3-title'].value }}</strong>
             <hr class="d-block d-sm-block d-md-none" />
-            <p>support@teechip.com</p>
-            <p>211 N Pennsylvania St. <br />
-              Suite 600<br />
-              Indianapolis, IN 46204</p>
+            <div v-html="$hiwebBase.options.getPageOptions('global')['footer-column-3-content'].value"></div>
 
           </div>
           <div class="col-md-3 text-right pt-4">
@@ -86,6 +115,85 @@
   </div>
 
 </template>
+
+<script type="text/javascript">
+import $ from 'jquery';
+import Loader from '@/components/Loader';
+
+export default {
+
+  components: { Loader },
+
+  data() {
+    return {
+      siteName: process.env.NODE_ENV === 'production' ? window.shop.name : '',
+      logo: (process.env.NODE_ENV === 'development' || (process.env.NODE_ENV === 'production' && !window.shop.logo)) ? require('@/assets/default.png') : this.$hiwebBase.image.resize(window.shop.logo.path, 380),
+
+      menuLinks1: null,
+      isLoadingMenu1: false,
+
+      menuLinks2: null,
+      isLoadingMenu2: false,
+
+    };
+  },
+
+  created() {
+
+    // Load menus
+    let menuKey1 = this.$hiwebBase.options.getPageOptions('global')['footer-menu-1'].value;
+
+    if (menuKey1) {
+
+      this.isLoadingMenu1 = true;
+
+      this.$hiwebBase.api.get('menu_links', {
+        menu_key: menuKey1
+      }).then(response => {
+
+        this.menuLinks1 = new this.$hiwebBase.JsonApi(response.data);
+        this.isLoadingMenu1 = false;
+
+      }).catch(e => {
+        this.isLoadingMenu1 = false;
+      });
+
+    }
+
+    let menuKey2 = this.$hiwebBase.options.getPageOptions('global')['footer-menu-2'].value;
+
+    if (menuKey2) {
+
+      this.isLoadingMenu2 = true;
+
+      this.$hiwebBase.api.get('menu_links', {
+        menu_key: menuKey2
+      }).then(response => {
+
+        this.menuLinks2 = new this.$hiwebBase.JsonApi(response.data);
+        this.isLoadingMenu2 = false;
+
+      }).catch(e => {
+        this.isLoadingMenu2 = false;
+      });
+
+    }
+    
+
+  },
+
+  methods: {
+
+    scrollToTop() {
+      $('html, body').animate({
+          scrollTop: 0
+      }, 500);
+    }
+
+  }
+
+}
+</script>
 
 <style type="text/css" lang="scss">
 .footer__back-to-top {
@@ -153,28 +261,3 @@
   }
 }
 </style>
-
-<script type="text/javascript">
-import $ from 'jquery';
-
-export default {
-
-  data() {
-    return {
-      siteName: process.env.NODE_ENV === 'production' ? window.shop.name : '',
-      logo: (process.env.NODE_ENV === 'development' || (process.env.NODE_ENV === 'production' && !window.shop.logo)) ? require('@/assets/default.png') : this.$hiwebBase.image.resize(window.shop.logo.path, 380)
-    };
-  },
-
-  methods: {
-
-    scrollToTop() {
-      $('html, body').animate({
-          scrollTop: 0
-      }, 500);
-    }
-
-  }
-
-}
-</script>
