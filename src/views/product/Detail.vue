@@ -42,24 +42,6 @@
             <component v-bind:is="componentData.key" :options="componentData.options" :product-json-api="productJsonApi" :active-variant="activeVariant" />
           </div>
 
-          <!-- Review stars -->
-          <div class="mt-1" style="height: 1.5 rem">
-            <div style="display: inline-block;">
-              <div class="mr-3" style="color: #ffab00"> 
-                
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-
-              </div>
-            </div>
-            <div style="display: inline-block;">
-              <p> <a href="#" class="text-muted">4.5 - 688 reviews</a></p>
-            </div>
-          </div>
-
           <!-- Price -->
           <div v-if="activeVariant" style="margin-top: 0.1rem">
             <strong class="text-danger product-detail__price">{{ $hiwebBase.currency.formatted(activeVariant.attributes.price * qty) }}</strong>
@@ -78,7 +60,7 @@
           
           <div v-else>
             <strong class="text-danger" style="font-size: 32px; display: inline-block; font-weight: 700;">
-              From {{ $hiwebBase.currency.formatted(productJsonApi.document.data.attributes.min_price * qty) }}
+              From {{ $hiwebBase.currency.formatted(productJsonApi.document.data.attributes.min_price) }}
             </strong>
           </div>
 
@@ -88,10 +70,10 @@
           </div>
 
           <!-- Options -->
-          <template v-if="productJsonApi.document.data.relationships.options.data.length">
-              <div class="mt-4" v-for="option, index in productJsonApi.findRelationshipResources(productJsonApi.document.data, 'options')">
-                  <Option :option="option" :showAllOptions="productJsonApi.document.data.relationships.options.data.length > 1 && index === 0" :option-values="productJsonApi.findRelationshipResources(option, 'option_values')" :active-variant="activeVariant" />
-              </div>
+          <template v-if="productJsonApi.document.data.attributes.options.length">
+            <div class="mt-4" v-for="option, index in productJsonApi.document.data.attributes.options">
+              <Option :option="option" :index="index" />
+            </div>
           </template>
 
           <!-- Qty -->
@@ -212,13 +194,14 @@ import InStock from '@/widgets/InStock';
 import OrdersToday from '@/widgets/OrdersToday';
 import PeopleWatching from '@/widgets/PeopleWatching';
 import Timer from '@/widgets/Timer';
+import RatingStars from '@/widgets/RatingStars';
 
 export default {
 
   mixins: [base.mixins.product.detail],
 
   components: { Images, Option, RelatedProducts,
-    DeliveryEstimation, InStock, OrdersToday, PeopleWatching, Timer
+    DeliveryEstimation, InStock, OrdersToday, PeopleWatching, Timer, RatingStars
   },
 
   mounted() {

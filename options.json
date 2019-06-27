@@ -1,6 +1,30 @@
 {
 	"components": {
 
+		"custom-html": {
+			"label": "Custom HTML",
+			"options": {
+
+				"display": {
+					"label": "Show for",
+					"type": "select",
+					"options": {
+						"all": "All devices",
+						"mobile": "Only mobile",
+						"mobile-tablet": "Mobile and tablet",
+						"desktop": "Only desktop"
+					},
+					"value": "all"
+				},
+				"html": {
+					"label": "HTML code",
+					"type": "textarea",
+					"value": ""
+				}
+
+			}
+		},
+
 		"slide": {
 			"label": "Images Slider",
 			"options": {
@@ -75,6 +99,34 @@
 					"value": "all"
 				}
 
+			}
+		},
+
+		"rating-stars": {
+			"label": "Fake rating stars",
+			"available": ["product"],
+			"options": {
+				"display": {
+					"label": "Show for",
+					"type": "select",
+					"options": {
+						"all": "All devices",
+						"mobile": "Only mobile",
+						"mobile-tablet": "Mobile and tablet",
+						"desktop": "Only desktop"
+					},
+					"value": "all"
+				},
+				"rating": {
+					"label": "Rating score",
+					"type": "input-text",
+					"value": 4.8
+				},
+				"totalReviews": {
+					"label": "Total reviews count",
+					"type": "input-text",
+					"value": 688
+				}
 			}
 		},
 
@@ -318,6 +370,22 @@
 				"after-product-title": {
 					"label": "After product title",
 					"components": [
+
+						{
+							"key": "rating-stars",
+							"options": {
+								"display": {
+									"value": "all"
+								},
+								"rating": {
+									"value": 4.8
+								},
+								"totalReviews": {
+									"value": 688
+								}
+							}
+						}
+
 					]
 				},
 

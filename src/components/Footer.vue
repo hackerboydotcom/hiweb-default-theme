@@ -140,49 +140,59 @@ export default {
 
   created() {
 
-    // Load menus
-    let menuKey1 = this.$hiwebBase.options.getPageOptions('global')['footer-menu-1'].value;
-
-    if (menuKey1) {
-
-      this.isLoadingMenu1 = true;
-
-      this.$hiwebBase.api.get('menu_links', {
-        menu_key: menuKey1
-      }).then(response => {
-
-        this.menuLinks1 = new this.$hiwebBase.JsonApi(response.data);
-        this.isLoadingMenu1 = false;
-
-      }).catch(e => {
-        this.isLoadingMenu1 = false;
-      });
-
-    }
-
-    let menuKey2 = this.$hiwebBase.options.getPageOptions('global')['footer-menu-2'].value;
-
-    if (menuKey2) {
-
-      this.isLoadingMenu2 = true;
-
-      this.$hiwebBase.api.get('menu_links', {
-        menu_key: menuKey2
-      }).then(response => {
-
-        this.menuLinks2 = new this.$hiwebBase.JsonApi(response.data);
-        this.isLoadingMenu2 = false;
-
-      }).catch(e => {
-        this.isLoadingMenu2 = false;
-      });
-
-    }
-    
+    this.loadMenus();
+  
+    // Live edit event
+    window.addEventListener('options-updated', e => {
+      this.loadMenus();
+    });
 
   },
 
   methods: {
+
+    loadMenus() {
+
+      // Load menus
+      let menuKey1 = this.$hiwebBase.options.getPageOptions('global')['footer-menu-1'].value;
+
+      if (menuKey1) {
+
+        this.isLoadingMenu1 = true;
+
+        this.$hiwebBase.api.get('menu_links', {
+          menu_key: menuKey1
+        }).then(response => {
+
+          this.menuLinks1 = new this.$hiwebBase.JsonApi(response.data);
+          this.isLoadingMenu1 = false;
+
+        }).catch(e => {
+          this.isLoadingMenu1 = false;
+        });
+
+      }
+
+      let menuKey2 = this.$hiwebBase.options.getPageOptions('global')['footer-menu-2'].value;
+
+      if (menuKey2) {
+
+        this.isLoadingMenu2 = true;
+
+        this.$hiwebBase.api.get('menu_links', {
+          menu_key: menuKey2
+        }).then(response => {
+
+          this.menuLinks2 = new this.$hiwebBase.JsonApi(response.data);
+          this.isLoadingMenu2 = false;
+
+        }).catch(e => {
+          this.isLoadingMenu2 = false;
+        });
+
+      }
+
+    },
 
     scrollToTop() {
       $('html, body').animate({

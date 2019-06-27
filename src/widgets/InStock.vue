@@ -36,7 +36,7 @@ export default {
 
   name: 'in-stock',
 
-  props: ['activeVariant', 'min', 'max', 'options'],
+  props: ['productJsonApi', 'activeVariant', 'min', 'max', 'options'],
 
   mixins: [mixin],
 
@@ -58,11 +58,11 @@ export default {
 
     setCount() {
       let localStorage = window.localStorage;
-      let count = localStorage.getItem('in-stock-' + this.activeVariant.id);
+      let count = localStorage.getItem(this.storageKey);
 
       if (!count) {
         count = Math.floor((Math.random() * (this.max ? this.max : 15)) + (this.min ? this.min : 5));
-        localStorage.setItem('in-stock-' + this.activeVariant.id, count);
+        localStorage.setItem(this.storageKey, count);
       }
 
       return this.count = count;
@@ -74,6 +74,20 @@ export default {
 
     activeVariant: function() {
       this.setCount();
+    }
+
+  },
+
+  computed: {
+
+    storageKey: function() {
+
+      if (this.activeVariant) {
+        return 'in-stock-' + this.activeVariant.id;
+      }
+
+      return 'in-stock-' + this.productJsonApi.document.data.id;
+
     }
 
   }

@@ -5,13 +5,13 @@ export default {
     displayClass: function() {
 
       if (typeof this.options === 'undefined' || typeof this.options.display === 'undefined') {
-        return 'wtf1';
+        return '';
       }
 
       switch (this.options.display.value) {
 
         case 'all':
-        return 'wtf2';
+        return '';
         break;
 
         case 'mobile':
@@ -27,7 +27,7 @@ export default {
         break;
 
         default:
-        return 'wtf3';
+        return '';
         break;
 
       }

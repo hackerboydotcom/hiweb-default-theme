@@ -33,11 +33,13 @@ import Breadcrumb from '@/components/Breadcrumb';
 import Slide from '@/widgets/Slide';
 import ProductBox from '@/components/ProductBox';
 import Loader from '@/components/Loader';
+import CustomHtml from '@/widgets/CustomHtml';
 
 Vue.component('breadcrumb', Breadcrumb);
 Vue.component('loader', Loader);
 Vue.component('slide', Slide);
 Vue.component('product-box', ProductBox);
+Vue.component('custom-html', CustomHtml);
 
 // Init vue app
 new Vue({

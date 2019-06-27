@@ -3,12 +3,12 @@
 
     <!-- Option name -->
     <div class="mb-2">
-      <strong>{{ option.attributes.name }}</strong>
-      <template v-if="activeOptionValue">
-        <span>: {{ activeOptionValue.attributes.value }}</span>
+      <strong>{{ option.name }}</strong>
+      <template>
+        <span>: {{ selectedOptionValue }}</span>
       </template>
-      <span v-if="option.attributes.option_guide_id" class="product-detail__option__option-guide" @click="showOptionGuide">
-        {{ option.attributes.name }} Guide
+      <span v-if="option.option_guide_id" class="product-detail__option__option-guide" @click="showOptionGuide">
+        {{ option.name }} Guide
         <div class="product-detail__option__option-guide__loader" style="display: none">
           <Loader />
           <span>Wait a sec...</span>
@@ -17,7 +17,7 @@
     </div>
 
     <!-- Option color selector -->
-    <template v-if="optionValues && getOptionType() === 'color'">
+    <template v-if="false">
       <div class="row">
         <div class="text-center col-2" v-for="optionValue in optionValues" v-if="show(optionValue.id)">
 
@@ -34,7 +34,7 @@
     <!-- Option default selector -->
     <template v-else>
 
-      <div v-if="optionValueMaxLength() <= 10" style="margin-left: -8px; margin-right: -8px;">
+      <div v-if="false" style="margin-left: -8px; margin-right: -8px;">
         <div :class="'product-detail__option__default-select ' + (optionValueMaxLength() > 3 ? 'product-detail__option__default-select--long' : '')" v-for="optionValue in optionValues" v-if="show(optionValue.id)" @click="changeOptionValue(optionValue.id)">
           <div :class="'text-center product-detail__option__option-value text-center product-detail__option__option-value--default ' + (checkActive(optionValue.id) ? 'active' : '')">
             <span>{{ optionValue.attributes.value }}</span>
@@ -44,7 +44,8 @@
 
       <div v-else>
         <select v-model="selectedOptionValue">
-          <option v-for="optionValue, index in optionValues" :selected="checkActive(optionValue.id)" :key="index" :value="optionValue.id">{{ optionValue.attributes.value }}</option>
+          <option :value="null">Select an option</option>
+          <option v-for="optionValue, index in option.values" :key="index" :value="optionValue">{{ optionValue }}</option>
         </select>
         <div style="clear: both;"></div>
       </div>
@@ -155,14 +156,13 @@ export default {
   data() {
 
     return {
-      selectedOptionValue: null,
       optionGuide: null
     };
 
   },
 
   created() {
-    this.selectedOptionValue = this.activeOptionValueId;
+
   },
 
   mounted() {
@@ -176,12 +176,12 @@ export default {
 
       let max = 0;
 
-      for (let i = 0; i < this.optionValues.length; i++) {
+      for (let i = 0; i < this.option.values.length; i++) {
 
-        let optionValue = this.optionValues[i];
+        let optionValue = this.option.values[i];
 
-        if (optionValue.attributes.value.length > max) {
-          max = optionValue.attributes.value.length;
+        if (optionValue.length > max) {
+          max = optionValue.length;
         }
 
       }
@@ -191,11 +191,6 @@ export default {
     },
 
     activeNiceSelect() {
-
-      // Active nice select for long option value
-      if (this.optionValueMaxLength() <= 10) {
-        return;
-      }
 
       $(document).ready(() => {
         
@@ -218,7 +213,9 @@ export default {
 
           clearInterval(findElement);
 
-          $(this.$el).find('.nice-select .current').html(this.activeOptionValue.attributes.value);
+          if (this.activeVariant) {
+            $(this.$el).find('.nice-select .current').html(this.activeVariant.attributes['option' + (this.index + 1)]);
+          }
 
         }, 100);
 
@@ -281,15 +278,6 @@ export default {
   },
 
   watch: {
-
-    selectedOptionValue: function() {
-      this.changeOptionValue(this.selectedOptionValue);
-    },
-
-    activeOptionValue: function() {
-      this.destroyNiceSelect();
-      this.activeNiceSelect();
-    }
 
   }
 
