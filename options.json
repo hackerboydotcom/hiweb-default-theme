@@ -218,10 +218,10 @@
 
 			"options": {
 
-				"test-wysiwyg": {
-					"label": "Test WYSIWYG",
-					"type": "wysiwyg",
-					"value": "Hello world"
+				"logo": {
+					"label": "Logo",
+					"type": "image",
+					"value": "2019/6/27/3024d801-6398-4d50-8232-eaa1ec67eca6.png"
 				},
 
 				"show-collections-in-navbar": {
@@ -312,8 +312,8 @@
 								},
 
 								"images": {
-									"value": ["https://images.pexels.com/photos/325649/pexels-photo-325649.jpeg?cs=srgb&dl=art-artistic-background-325649.jpg&fm=jpg?search_query=&tracking_id=f4dx0kiebb9&w=1920&h=1086",
-										"https://images.pexels.com/photos/220067/pexels-photo-220067.jpeg?crop=entropy&cs=srgb&dl=background-blur-bright-220067.jpg&fit=crop&fm=jpg&h=1080&w=1920"
+									"value": ["2019/6/27/8d16d5b4-a448-4ab9-9e25-58c6c30e8b6e.jpg",
+										"2019/6/27/96795fad-face-4e33-996d-1c90d5b6c28a.jpg"
 									]
 								},
 								"links": {

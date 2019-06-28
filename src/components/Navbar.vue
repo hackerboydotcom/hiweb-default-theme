@@ -29,8 +29,8 @@
         </div>
         <div class="col-lg-6">
           
-          <div class="pt-2">
-            <input type="text" class="form-control form-control-lg" placeholder="What are you looking for?" v-model="searchProductTitle" v-on:keyup.enter="searchProducts" />
+          <div style="padding-top: 12px">
+            <input type="text" class="form-control form-control-md" placeholder="What are you looking for?" v-model="searchProductTitle" v-on:keyup.enter="searchProducts" />
           </div>
 
         </div>
@@ -252,6 +252,11 @@ export default {
 
       });
 
+    }
+
+    // If theme logo has value
+    if (this.$hiwebBase.options.getPageOption('global', 'logo').value) {
+      this.logo = this.$hiwebBase.image.resize(this.$hiwebBase.options.getPageOption('global', 'logo').value, 250);
     }
 
   },

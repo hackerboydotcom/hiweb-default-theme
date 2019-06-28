@@ -13,15 +13,20 @@
 
     </template>
 
+    <ContactForm v-if="pageJsonApi.document.data.attributes.layout === 'contact'" />
+
   </div>
 </template>
 
 <script type="text/javascript">
 import base from 'hiweb-vue-base-storefront';
+import ContactForm from 'hiweb-vue-base-storefront/views/components/ContactForm';
 
 export default {
 
   mixins: [base.mixins.page.detail],
+
+  components: { ContactForm }
 
 }
 </script>

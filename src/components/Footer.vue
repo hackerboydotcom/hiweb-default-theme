@@ -147,6 +147,11 @@ export default {
       this.loadMenus();
     });
 
+    // If theme logo has value
+    if (this.$hiwebBase.options.getPageOption('global', 'logo').value) {
+      this.logo = this.$hiwebBase.image.resize(this.$hiwebBase.options.getPageOption('global', 'logo').value, 250);
+    }
+
   },
 
   methods: {
