@@ -290,7 +290,7 @@ export default {
     searchProducts() {
 
       this.$router.push({
-        name: 'products.collection',
+        name: 'product.collection',
         query: {
           title: this.searchProductTitle
         }
