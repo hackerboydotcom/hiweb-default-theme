@@ -145,16 +145,24 @@ export default {
     // Live edit event
     window.addEventListener('options-updated', e => {
       this.loadMenus();
+      this.setLogo();
+      this.$forceUpdate();
     });
 
-    // If theme logo has value
-    if (this.$hiwebBase.options.getPageOption('global', 'logo').value) {
-      this.logo = this.$hiwebBase.image.resize(this.$hiwebBase.options.getPageOption('global', 'logo').value, 250);
-    }
+    this.setLogo();
 
   },
 
   methods: {
+
+    setLogo() {
+
+      // If theme logo has value
+      if (this.$hiwebBase.options.getPageOption('global', 'logo').value) {
+        this.logo = this.$hiwebBase.image.resize(this.$hiwebBase.options.getPageOption('global', 'logo').value, 250);
+      }
+
+    },
 
     loadMenus() {
 
